@@ -1,0 +1,48 @@
+---
+title: "p8105_datawrangling2"
+author: "Amanda Tsai"
+date: "10/24/2020"
+output: html_document
+---
+```{r setup}
+library(tidyverse)
+library(rvest)
+library(httr)
+```
+
+```{r load}
+url = "http://samhda.s3-us-gov-west-1.amazonaws.com/s3fs-public/field-uploads/2k15StateFiles/NSDUHsaeShortTermCHG2015.htm"
+drug_use_html = read_html(url)
+drug_use_html
+```
+
+```{r}
+table_marj = 
+  drug_use_html %>% 
+  html_nodes(css = "table") %>% 
+  first() %>%
+  html_table() %>%
+  slice(-1) %>% 
+  as_tibble()
+table_marj
+```
+
+```{r css}
+swm_html = 
+  read_html("https://www.imdb.com/list/ls070150896/")
+
+```
+
+```{r amazon}
+amz_html = read_html("https://www.amazon.com/product-reviews/B00005JNBQ/ref=cm_cr_arp_d_viewopt_rvwer?ie=UTF8&reviewerType=avp_only_reviews&sortBy=recent&pageNumber=1") 
+amz_vec = amz_html %>%
+  html_nodes(".a-text-bold span") %>%
+  html_text()
+
+amz_vec
+  
+
+```
+
+
+

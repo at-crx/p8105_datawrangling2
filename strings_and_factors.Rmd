@@ -1,0 +1,16 @@
+---
+title: "strings_and_factors"
+author: "Amanda Tsai"
+date: "10/25/2020"
+output: html_document
+---
+```{r}
+library(rvest)
+library(p8105.datasets)
+```
+
+```{r}
+
+```
+
+
